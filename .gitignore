@@ -1,0 +1,48 @@
+# Real API keys - copy to llm_config.example.json with placeholders instead
+config/llm_config.json
+APIs
+
+# Old/duplicate script + data folders (superseded by scripts/)
+old_scenes/
+old_scenes2/
+results_old/
+
+# Large generated data / run outputs
+results/
+results_summary/
+breakdown_results/
+query_log/
+
+# Generated scene data (keep scripts.py, ignore generated data)
+scenes/csv_*/
+scenes/json_*/
+scenes/query/
+scenes/not_query/
+scenes/*.zip
+
+# Run logs
+*.log
+
+# Root-level generated result artifacts (regenerable via compute_*/plot_*.py)
+failure_rate_4subplots.png
+generator_heatmap.pdf
+generator_target_fr.csv
+setting_bar.pdf
+setting_fr.csv
+style_fr.pdf
+response_time.csv
+results_table.csv
+results_table.json
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/

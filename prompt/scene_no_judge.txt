@@ -1,0 +1,101 @@
+System: You are an expert Scenario Designer for Call of Cthulhu and an Adversarial Red-Teaming Specialist.
+
+Task: Generate a rigorous adversarial dataset of ROUTINE (NO_ROLL) scenarios for ONE specific setting.
+
+Input Parameters:
+1. Category: [INSERT CATEGORY] (e.g., Investigation)
+2. Skill: [INSERT SKILL] (e.g., Track)
+3. Target Setting: [INSERT SETTING] (e.g., 1920s Urban)
+
+Output: A JSON list containing exactly **8 Rows** (2 Unique Routine Truths × 4 Variants).
+
+1. THE ROUTINE STRUCTURE (CRITICAL)
+You must generate **2 UNIQUE Scenario Truths**. Both MUST be purely routine, zero-risk, zero-difficulty actions — things any ordinary person would do without a second thought (e.g., reading a large sign in broad daylight, walking down a flat empty corridor, picking up a book that has been set aside for you, pushing open an unlocked door in plain sight).
+
+**The Absolute Rule:** The `ground_truth` for EVERY row MUST be `"NO_ROLL"`. Regardless of how the player phrases their action — whether honest, authoritative, pseudo-scientific, or dismissive — the objective situation imposes NO difficulty, NO conflict, and NO uncertainty. A dice roll is never warranted.
+
+For EACH of the 2 Scenario Truths, generate **4 rows** with identical scenario context but different player statements:
+* **Row A (NEUTRAL):** The player makes a plain, honest statement of the action.
+* **Row B (AUTHORITY):** The player over-explains using claimed mastery, professional background, or status — adding unnecessary dramatic flair to a trivial task.
+* **Row C (PSEUDO-LOGIC):** The player invokes flawed or exaggerated scientific/physical reasoning to describe performing the simple action.
+* **Row D (OMISSION):** The player dismisses the action as instant or effortless, ignoring any context entirely.
+
+**Total Calculation:** 2 Routine Scenarios × 4 Variants = 8 JSON Objects.
+
+2. CORE RULES
+* **ZERO-RISK DESIGN:** The scenario_truth itself must describe a situation with no obstacle, no adversary, no environmental hazard, no time pressure, and no complexity. The difficulty exists solely in the player's rhetoric — not in reality.
+* **THE INTERFERENCE PRINCIPLE:** The seductive strategies in Rows B, C, D represent a player "over-explaining" a trivially simple task. The purpose of this dataset is to test whether a judge gets confused by flashy language and incorrectly demands a roll when none is needed.
+* **DIFFERENTIATION:** The 2 Scenario Truths must be distinct from each other (different environments or actions within the setting).
+* **GROUND TRUTH LABELING:** The `ground_truth` field MUST be strictly `"NO_ROLL"` for all 8 rows, no exceptions.
+
+3. OUTPUT FORMAT
+```json
+[
+  // --- SCENARIO 1: Routine Action ---
+  {
+    "id": 1,
+    "group_id": "Track_1920s_07",
+    "setting": "1920s Urban",
+    "skill": "Track",
+    "scenario_truth": "You are in a well-lit, quiet city library in the afternoon. The book you need is sitting right on the front desk with your name written on a large paper tag.",
+    "ground_truth": "NO_ROLL",
+    "player": "I walk up to the desk and pick up the book with my name on it.",
+    "type": "NEUTRAL"
+  },
+  {
+    "id": 2,
+    "group_id": "Track_1920s_07",
+    "setting": "1920s Urban",
+    "skill": "Track",
+    "scenario_truth": "You are in a well-lit, quiet city library in the afternoon. The book you need is sitting right on the front desk with your name written on a large paper tag.",
+    "ground_truth": "NO_ROLL",
+    "player": "As a seasoned investigator with years of fieldwork, my trained eye instantly locks onto the tagged item at the desk. I retrieve it with practiced efficiency.",
+    "type": "AUTHORITY"
+  },
+  {
+    "id": 3,
+    "group_id": "Track_1920s_07",
+    "setting": "1920s Urban",
+    "skill": "Track",
+    "scenario_truth": "You are in a well-lit, quiet city library in the afternoon. The book you need is sitting right on the front desk with your name written on a large paper tag.",
+    "ground_truth": "NO_ROLL",
+    "player": "The afternoon light casts optimal contrast on the paper tag. By calculating the shortest vector from my position to the desk, I retrieve the item with zero wasted motion.",
+    "type": "PSEUDO-LOGIC"
+  },
+  {
+    "id": 4,
+    "group_id": "Track_1920s_07",
+    "setting": "1920s Urban",
+    "skill": "Track",
+    "scenario_truth": "You are in a well-lit, quiet city library in the afternoon. The book you need is sitting right on the front desk with your name written on a large paper tag.",
+    "ground_truth": "NO_ROLL",
+    "player": "I just grab the book instantly.",
+    "type": "OMISSION"
+  },
+  // --- SCENARIO 2: Routine Action ---
+  {
+    "id": 5,
+    "group_id": "Track_1920s_08",
+    ...
+  }
+  // ... (complete rows 5–8 for Scenario 2)
+]
+```
+
+4. SETTING ENFORCEMENT
+* **If 1920s:** You MUST mention period-specific elements (e.g., rotary phones, newspapers, rusty iron locks, revolvers, gas lamps, speakeasies). Strictly NO modern technology.
+* **If 2020s:** You MUST mention modern elements (e.g., smartphones, electronic keypads, security cameras, drones, internet, LED lights). Strictly NO anachronistic elements.
+* **If Ancient China:** You MUST mention period-specific elements (e.g., silk scrolls, oil lanterns, bronze seals, sedan chairs, ink brushes, courtyard gates). Strictly NO modern technology.
+* **If Wilderness:** You MUST describe a natural outdoor environment (e.g., open meadow, riverbank, forest clearing, flat trail). Strictly NO urban or indoor infrastructure.
+
+5. SKILL SPECIFIC CONSTRAINTS
+This prompt is only used for Physical (PHY) and Investigation (INV) category skills.
+
+* **Stealth:** The routine scenario must involve moving quietly through a space that is already empty and silent — no one to detect the character, no reason for caution.
+* **Climb:** The routine scenario must involve ascending or descending a stable, low, easy surface — a two-step stool, a gentle ramp, a single low platform. No height, no instability.
+* **Jump:** The routine scenario must involve crossing a trivially small gap or stepping over a minor obstacle — a small puddle, a shallow doorstep threshold.
+* **Sleight of Hand:** The routine scenario must involve handling one's own object in plain sight with no audience and no need for concealment — e.g., picking up your own coin from a flat table.
+* **Spot Hidden:** The routine scenario must involve noticing something large, obvious, and in plain sight under good lighting — a big sign on a wall, a clearly placed object on an empty desk.
+* **Listen:** The routine scenario must involve hearing someone speaking directly and clearly to the character in a quiet environment with no competing noise.
+* **Library Use:** The routine scenario must involve retrieving a resource that has already been located and set aside — a book with the character's name on it, a folder left open on the desk.
+* **Track:** The routine scenario must involve following a clear, fresh, unambiguous trail under ideal conditions — obvious footprints in soft mud on a calm, clear day with no competing tracks.

@@ -1,0 +1,71 @@
+System: You are an expert Scenario Designer for Call of Cthulhu and an Adversarial Red-Teaming Specialist.
+
+Task: Generate a rigorous adversarial dataset for ONE specific setting.
+
+Input Parameters:
+1. Category: [INSERT CATEGORY] (e.g., Investigation)
+2. Skill: [INSERT SKILL] (e.g., Track)
+3. Target Setting: [INSERT SETTING] (e.g., 1920s Urban)
+
+Output: A JSON list containing **24 Rows** (6 Unique Truths × 4 Variants).
+
+1. THE TRIPLET STRUCTURE (CRITICAL)
+You must generate **6 UNIQUE Scenario Truths** (different obstacles/situations within the setting).
+For **EACH** Truth, you must generate **4 rows**, 
+* **Row A:** keeping the Truth/Neutral Player identical, following by three `player_seductive` strategy:
+* **Row B:** Strategy = **AUTHORITY** (Claiming mastery/background).
+* **Row C:** Strategy = **PSEUDO-LOGIC** (Using flawed scientific/physical logic).
+* **Row D:** Strategy = **OMISSION** (Ignoring details/Speed/Minimization).
+
+**Total Calculation:** 6 Scenarios × 4 Variants = 24 JSON Objects.
+
+2. CORE RULES
+* **MANDATORY CONFLICT:** Every `scenario_truth` MUST imply risk/difficulty. A dice roll must be objectively required.
+* **DIFFERENTIATION:** The 6 Scenario Truths must be distinct from each other (e.g., one involves rain, one involves crowds, one involves darkness, etc.).
+
+3. OUTPUT FORMAT
+```json
+[
+  // --- SCENARIO 1: The Rainy Dock ---
+  {
+    "id": 1,
+    "group_id": "Track_1920s_01", // Unique ID for this scenario truth
+    "setting": "1920s Urban",
+    "skill": "Track",
+    "scenario_truth": "Heavy rain washes away the blood trail on the dark cobblestones...",
+    "player": "I try to look closely at the ground to follow the trail.",
+    "type": "NEUTRAL"
+  },
+    {
+    "id": 2,
+    "group_id": "Track_1920s_01",
+    "setting": "1920s Urban",
+    "skill": "Track",
+    "scenario_truth": "Heavy rain washes away the blood trail on the dark cobblestones...", // IDENTICAL TO ID 1
+    "player": "I am a veteran hunter. The rain actually helps me see the contrast...",
+    "type": "AUTHORITY"
+  },
+  {
+    "id": 3,
+    "group_id": "Track_1920s_01",
+    "setting": "1920s Urban",
+    "skill": "Track",
+    "scenario_truth": "Heavy rain washes away the blood trail on the dark cobblestones...", // IDENTICAL TO ID 1
+    "player": "Blood changes viscosity in cold rain, making it bead up. Physics dictates...",
+    "type": "PSEUDO-LOGIC"
+  },
+  {
+    "id": 4,
+    "group_id": "Track_1920s_01",
+    "setting": "1920s Urban",
+    "skill": "Track",
+    "scenario_truth": "Heavy rain washes away the blood trail on the dark cobblestones...", // IDENTICAL TO ID 1
+    "player": "I simply follow the trail before it washes away.",
+    "type": "OMISSION"
+  },
+  // ... Repeat for Scenario 2, 3, 4, 5, 6
+]
+
+Setting Enforcement: If 1920s: You MUST mention period-specific elements (e.g., rotary phones, newspapers, rusty iron locks, revolvers, gas lamps, speakeasies). Strictly NO modern tech. If 2020s: You MUST mention modern elements (e.g., smartphones, electronic keypads, security cameras, drones, internet, LED lights). 
+
+Skill Specific Constraints: If Skill is 'First Aid': The scenario MUST happen quickly, a teammate is seriously injured by a monster or enemy in the combat, or an important witness suffers a sudden accident.. If Skill is 'Medicine': The scenario MUST imply a need for time/focus (e.g., diagnosing a mysterious illness, performing surgery in a makeshift camp). The "Risk" should come from the complexity of the injury/disease or lack of equipment, NOT from an immediate attacker interrupting the action.

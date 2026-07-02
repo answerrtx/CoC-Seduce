@@ -1,0 +1,25 @@
+{
+  "categories": [
+    {
+      "name": "Combat",
+      "id": "CMB",
+      "skills": ["Brawl", "Handgun", "Dodge", "Throw"]
+    },
+    {
+      "name": "Physical",
+      "id": "PHY",
+      "skills": ["Stealth", "Climb", "Jump", "Sleight of Hand"]
+    },
+    {
+      "name": "Professional",
+      "id": "PRO",
+      "skills": ["Locksmith", "Elec. Repair", "First Aid", "Medicine"]
+    },
+    {
+      "name": "Investigation",
+      "id": "INV",
+      "skills": ["Spot Hidden", "Listen", "Library Use", "Track"]
+    }
+  ],
+  "target_settings": ["1920s Urban", "2020s Urban", "Ancient China", "Wilderness"]
+}

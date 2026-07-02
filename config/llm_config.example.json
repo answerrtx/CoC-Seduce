@@ -1,0 +1,29 @@
+{
+  "providers": {
+    "gpt": {
+      "dialogue": "gpt-5.4-2026-03-05",
+      "judge": ["gpt-5.4-2026-03-05",  "gpt-5-2025-08-07", "gpt-5-mini-2025-08-07", "gpt-4.1-2025-04-14"],
+      "api_key": "YOUR_OPENAI_API_KEY"
+    },
+    "claude": {
+      "dialogue": "claude-sonnet-4-6",
+      "judge": ["claude-opus-4-6", "claude-sonnet-4-6", "claude-sonnet-4-5", "claude-haiku-4-5-20251001"],
+      "api_key": "YOUR_ANTHROPIC_API_KEY"
+    },
+    "gemini": {
+      "dialogue": "gemini-3.5-flash",
+      "judge": ["gemini-2.5-flash", "gemini-3-flash-preview", "gemini-3.5-flash"],
+      "api_key": "YOUR_GEMINI_API_KEY"
+    },
+    "deepseek": {
+      "dialogue": "deepseek-v4-flash",
+      "judge": ["deepseek-v4-flash", "deepseek-v4-pro", "deepseek-v3.2", "deepseek-r1"],
+      "api_key": "YOUR_DEEPSEEK_API_KEY"
+    },
+    "qwen": {
+      "dialogue": "qwen3.7-max",
+      "judge": ["qwen3.7-max","qwen3.6-flash","qwen3-max","qwen3-235b-a22b-thinking-2507","qwen3-235b-a22b-instruct-2507"],
+      "api_key": "YOUR_QWEN_API_KEY"
+    }
+  }
+}
