@@ -6,8 +6,8 @@ from collections import defaultdict
 data_dir = Path("results_summary")
 GENERATORS = ["gpt", "claude", "gemini"]
 JUDGE_MODELS = [
-    "gpt-5.4-2026-03-05", "gpt-5-2025-08-07", "gpt-5-mini-2025-08-07", "gpt-4.1-2025-04-14",
-    "claude-opus-4-6", "claude-sonnet-4-6", "claude-sonnet-4-5", "claude-haiku-4-5-20251001",
+    "gpt-5.5-2026-04-23", "gpt-5.4-2026-03-05", "gpt-5-2025-08-07", "gpt-5-mini-2025-08-07", "gpt-4.1-2025-04-14",
+    "claude-sonnet-5", "claude-opus-4-6", "claude-sonnet-4-6", "claude-sonnet-4-5", "claude-haiku-4-5-20251001",
     "gemini-2.5-flash", "gemini-3-flash-preview", "gemini-3.5-flash",
     "deepseek-v4-flash", "deepseek-v4-pro", "deepseek-v3.2", "deepseek-r1",
     "qwen3.7-max", "qwen3.6-flash", "qwen3-max",

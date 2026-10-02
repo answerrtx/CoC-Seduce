@@ -204,17 +204,19 @@ def call_claude(api_key: str, model: str, prompt: str) -> str:
     last_err: Optional[Exception] = None
     for attempt in range(1, MAX_RETRIES + 1):
         try:
+            extra = {"thinking": {"type": "disabled"}} if model.startswith("claude-sonnet-5") else {}
             msg = client.messages.create(
                 model=model,
                 max_tokens=MAX_TOKENS,
                 messages=[{"role": "user", "content": prompt}],
+                **extra,
             )
             if not msg.content:
                 reason = msg.stop_reason
                 if reason == "refusal":
                     raise RuntimeError(f"REFUSAL (stop_reason=refusal) — skipping retries")
                 raise ValueError(f"Empty content (stop_reason={reason})")
-            return msg.content[0].text
+            return "".join(b.text for b in msg.content if getattr(b, "type", "") == "text")
         except RuntimeError as e:
             if "REFUSAL" in str(e):
                 raise  # don't retry on safety refusals
@@ -486,6 +488,10 @@ def main() -> None:
         help="Query CSV stems, e.g. claude_CMB gpt_INV. Default: all files in scenes/query/",
     )
     ap.add_argument(
+        "--models", nargs="+", metavar="MODEL",
+        help="Only run these judge model names (default: all in config)",
+    )
+    ap.add_argument(
         "--workers", type=int, default=4,
         help="Concurrent row workers per model (default: 4)",
     )
@@ -527,6 +533,8 @@ def main() -> None:
     for pname in sel_providers:
         pcfg = llm_cfg["providers"][pname]
         for m in pcfg.get("judge", []):
+            if args.models and m not in args.models:
+                continue
             judge_tuples.append((pname, pcfg["api_key"], m))
 
     if not judge_tuples:

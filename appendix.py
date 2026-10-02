@@ -23,9 +23,9 @@ TYPES      = ["NEUTRAL", "AUTHORITY", "PSEUDO-LOGIC", "OMISSION"]
 SETTINGS   = ["1920s_Urban", "2020s_Urban", "Ancient_China", "Wilderness"]
 
 JUDGE_MODELS = [
-    "gpt-5.4-2026-03-05", "gpt-5-2025-08-07",
+    "gpt-5.5-2026-04-23", "gpt-5.4-2026-03-05", "gpt-5-2025-08-07",
     "gpt-5-mini-2025-08-07", "gpt-4.1-2025-04-14",
-    "claude-opus-4-6", "claude-sonnet-4-6",
+    "claude-sonnet-5", "claude-opus-4-6", "claude-sonnet-4-6",
     "claude-sonnet-4-5", "claude-haiku-4-5-20251001",
     "gemini-2.5-flash", "gemini-3-flash-preview", "gemini-3.5-flash",
     "deepseek-v4-flash", "deepseek-v4-pro", "deepseek-v3.2", "deepseek-r1",
@@ -34,10 +34,12 @@ JUDGE_MODELS = [
 ]
 
 DISPLAY_MAP = {
+    "gpt-5.5-2026-04-23":           "GPT-5.5",
     "gpt-5.4-2026-03-05":           "GPT-5.4",
     "gpt-5-2025-08-07":             "GPT-5",
     "gpt-5-mini-2025-08-07":        "GPT-5-mini",
     "gpt-4.1-2025-04-14":           "GPT-4.1",
+    "claude-sonnet-5":              "Claude Sonnet 5",
     "claude-opus-4-6":              "Claude Opus 4.6",
     "claude-sonnet-4-6":            "Claude Sonnet 4.6",
     "claude-sonnet-4-5":            "Claude Sonnet 4.5",
@@ -57,10 +59,12 @@ DISPLAY_MAP = {
 }
 
 FAMILY_MAP = {
+    "gpt-5.5-2026-04-23":           "GPT",
     "gpt-5.4-2026-03-05":           "GPT",
     "gpt-5-2025-08-07":             "GPT",
     "gpt-5-mini-2025-08-07":        "GPT",
     "gpt-4.1-2025-04-14":           "GPT",
+    "claude-sonnet-5":              "Claude",
     "claude-opus-4-6":              "Claude",
     "claude-sonnet-4-6":            "Claude",
     "claude-sonnet-4-5":            "Claude",

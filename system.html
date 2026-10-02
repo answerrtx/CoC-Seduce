@@ -1,0 +1,143 @@
+<svg xmlns="http://w3.org" viewBox="0 0 1200 800" width="100%" height="100%">
+  <defs>
+    <!-- 背景渐变 -->
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+    
+    <!-- 各层级发光滤镜 -->
+    <filter id="glow-purple" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#a855f7" flood-opacity="0.3"/>
+    </filter>
+    <filter id="glow-blue" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#3b82f6" flood-opacity="0.3"/>
+    </filter>
+    <filter id="glow-amber" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#f59e0b" flood-opacity="0.2"/>
+    </filter>
+
+    <!-- 箭头标记定义 -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#64748b" />
+    </marker>
+    <marker id="arrow-purple" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#a855f7" />
+    </marker>
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#3b82f6" />
+    </marker>
+  </defs>
+
+  <!-- 画布背景 -->
+  <rect width="1200" height="800" fill="url(#bg-grad)" />
+
+  <!-- ==================== TITLE ==================== -->
+  <text x="600" y="50" font-family="system-ui, sans-serif" font-size="26" font-weight="bold" fill="#f8fafc" text-anchor="middle">推荐的 AI 文本 RPG 多智能体裁判团架构</text>
+  <text x="600" y="80" font-family="system-ui, sans-serif" font-size="14" fill="#94a3b8" text-anchor="middle">基于 Claude 3.5 Tool Calling 的动态路由与状态闭环系统</text>
+
+  <!-- ==================== TRIGGER: PLAYER INPUT ==================== -->
+  <g transform="translate(425, 120)">
+    <rect width="350" height="60" rx="10" fill="#1e293b" stroke="#475569" stroke-width="1.5" />
+    <text x="175" y="26" font-family="system-ui, sans-serif" font-size="12" fill="#94a3b8" font-weight="bold" text-anchor="middle" letter-spacing="1">TRIGGER</text>
+    <text x="175" y="46" font-family="system-ui, sans-serif" font-size="16" fill="#fbbf24" font-weight="bold" text-anchor="middle">🎮 玩家动作输入</text>
+  </g>
+  <path d="M 600 180 L 600 210" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)" />
+
+  <!-- ==================== LAYER 1: INPUT BASE ==================== -->
+  <g transform="translate(150, 210)">
+    <rect width="900" height="100" rx="12" fill="#0f172a" stroke="#3b82f6" stroke-width="1.5" stroke-dasharray="4" filter="url(#glow-blue)" />
+    <text x="20" y="30" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="#3b82f6" font-mono="true">LAYER 1</text>
+    <text x="20" y="55" font-family="system-ui, sans-serif" font-size="18" font-weight="bold" fill="#60a5fa">1. 预处理层 (Input Base)</text>
+    
+    <!-- 子卡片 1：数据整合 -->
+    <g transform="translate(320, 15)">
+      <rect width="260" height="70" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+      <text x="15" y="25" font-family="system-ui, sans-serif" font-size="14" font-weight="bold" fill="#e2e8f0">📦 数据与上下文整合</text>
+      <text x="15" y="45" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8">捕获当前输入，并自动挂载最新的</text>
+      <text x="15" y="60" font-family="system-ui, sans-serif" font-size="11" fill="#60a5fa" font-weight="bold">共享上下文快照 (Game State)</text>
+    </g>
+    
+    <!-- 子卡片 2：Note Agent 读 -->
+    <g transform="translate(600, 15)">
+      <rect width="260" height="70" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+      <text x="15" y="25" font-family="system-ui, sans-serif" font-size="14" font-weight="bold" fill="#34d399">🔍 Note Agent (异步读)</text>
+      <text x="15" y="45" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8">根据玩家输入关键词，自动在向量库</text>
+      <text x="15" y="60" font-family="system-ui, sans-serif" font-size="11" fill="#a7f3d0">召回历史记忆、NPC设定与世界大纲</text>
+    </g>
+  </g>
+  <path d="M 600 310 L 600 340" stroke="#3b82f6" stroke-width="2" marker-end="url(#arrow-blue)" />
+  <text x="610" y="330" font-family="system-ui, sans-serif" font-size="11" fill="#60a5fa" font-style="italic">携带饱满的“上下文数据包”向上递交</text>
+
+  <!-- ==================== LAYER 2: THE BRAIN ==================== -->
+  <g transform="translate(150, 340)">
+    <rect width="900" height="90" rx="12" fill="#1e1b4b" stroke="#a855f7" stroke-width="2" filter="url(#glow-purple)" />
+    <text x="20" y="30" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="#c084fc" font-mono="true">LAYER 2</text>
+    <text x="20" y="55" font-family="system-ui, sans-serif" font-size="20" font-weight="bold" fill="#e9d5ff">2. 核心调度层 (The Brain - Claude 3.5)</text>
+    <text x="400" y="52" font-family="system-ui, sans-serif" font-size="13" fill="#c084fc">【总控大脑】全权负责：意图识别、动作分类、动态规划 Tool 调用顺序与结果汇总</text>
+  </g>
+
+  <!-- 动态路由分流箭头 -->
+  <path d="M 375 430 L 375 480" stroke="#a855f7" stroke-width="2" stroke-dasharray="3" marker-end="url(#arrow-purple)" />
+  <text x="260" y="460" font-family="system-ui, sans-serif" font-size="11" fill="#c084fc" font-style="italic">根据语义动态调用 (Tool Calling)</text>
+
+  <path d="M 825 430 L 825 480" stroke="#a855f7" stroke-width="2" stroke-dasharray="3" marker-end="url(#arrow-purple)" />
+  <text x="835" y="460" font-family="system-ui, sans-serif" font-size="11" fill="#c084fc" font-style="italic">并行/串行/条件触发，完全自适应</text>
+
+  <!-- ==================== LAYER 3: WORKER TOOLS (PARALLEL) ==================== -->
+  <!-- Tool A: Dice Agent -->
+  <g transform="translate(150, 480)">
+    <rect width="430" height="110" rx="12" fill="#0f172a" stroke="#f87171" stroke-width="1.5" />
+    <rect x="350" y="12" width="65" height="20" rx="4" fill="#7f1d1d" />
+    <text x="382" y="26" font-family="system-ui, sans-serif" font-size="10" font-weight="bold" fill="#f87171" text-anchor="middle" font-mono="true">TOOL A</text>
+    <text x="20" y="32" font-family="system-ui, sans-serif" font-size="16" font-weight="bold" fill="#fca5a5">🎲 Dice Agent (规则与数值)</text>
+    <text x="20" y="58" font-family="system-ui, sans-serif" font-size="12" fill="#94a3b8">• 判定当前动作是否需要数值检定（如摇骰）</text>
+    <text x="20" y="76" font-family="system-ui, sans-serif" font-size="12" fill="#94a3b8">• 匹配对应规则书，计算属性加成与对抗结果</text>
+    <text x="20" y="94" font-family="system-ui, sans-serif" font-size="11" fill="#fcd34d" font-weight="bold">💡 工程建议：大模型输出结构化参数，后端纯代码引擎计算</text>
+  </g>
+
+  <!-- Tool B: Host Agent -->
+  <g transform="translate(620, 480)">
+    <rect width="430" height="110" rx="12" fill="#0f172a" stroke="#22d3ee" stroke-width="1.5" />
+    <rect x="350" y="12" width="65" height="20" rx="4" fill="#164e63" />
+    <text x="382" y="26" font-family="system-ui, sans-serif" font-size="10" font-weight="bold" fill="#22d3ee" text-anchor="middle" font-mono="true">TOOL B</text>
+    <text x="20" y="32" font-family="system-ui, sans-serif" font-size="16" font-weight="bold" fill="#99f6e4">🎭 Host Agent (叙事推进)</text>
+    <text x="20" y="58" font-family="system-ui, sans-serif" font-size="12" fill="#94a3b8">• 不涉及对抗时，专注于开放世界故事逻辑的演进</text>
+    <text x="20" y="76" font-family="system-ui, sans-serif" font-size="12" fill="#94a3b8">• 检查当前行为是否触发隐藏线索、环境剧变或剧情锚点</text>
+    <text x="20" y="94" font-family="system-ui, sans-serif" font-size="12" fill="#94a3b8">• 决定下一阶段 NPC 的潜在反应和局势走向</text>
+  </g>
+
+  <!-- Worker 汇聚回 Brain 汇总 -->
+  <path d="M 375 590 L 375 620 L 580 620" stroke="#64748b" stroke-width="1.5" fill="none" />
+  <path d="M 825 590 L 825 620 L 620 620" stroke="#64748b" stroke-width="1.5" fill="none" />
+  <path d="M 600 620 L 600 640" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)" />
+  <text x="600" y="613" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">返回 JSON 格式的专业中间判定</text>
+
+  <!-- ==================== LAYER 4: OUTPUT & UPDATE (CLOSING THE LOOP) ==================== -->
+  <g transform="translate(150, 640)">
+    <rect width="900" height="115" rx="12" fill="#0f172a" stroke="#d97706" stroke-width="1.5" filter="url(#glow-amber)" />
+    <text x="20" y="26" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="#f59e0b" font-mono="true">LAYER 4</text>
+    <text x="20" y="48" font-family="system-ui, sans-serif" font-size="16" font-weight="bold" fill="#fbbf24">4. 最终呈现与异步状态更新 (Output &amp; Update)</text>
+    
+    <!-- 最终输出卡片 -->
+    <g transform="translate(20, 60)">
+      <rect width="270" height="45" rx="6" fill="#78350f" fill-opacity="0.2" stroke="#d97706" stroke-width="1" />
+      <text x="12" y="20" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="#fbbf24">✍️ Output Agent (渲染层)</text>
+      <text x="12" y="36" font-family="system-ui, sans-serif" font-size="10" fill="#cbd5e1">润色冷冰冰的判定，生成风格化叙事与对话反馈玩家</text>
+    </g>
+
+    <!-- 状态更新卡片 -->
+    <g transform="translate(315, 60)">
+      <rect width="270" height="45" rx="6" fill="#1e3a8a" fill-opacity="0.2" stroke="#3b82f6" stroke-width="1" />
+      <text x="12" y="20" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="#60a5fa">💾 State Updater (实时写回)</text>
+      <text x="12" y="36" font-family="system-ui, sans-serif" font-size="10" fill="#cbd5e1">将血量、道具、环境Flag等变动写回最顶层 [Game State]</text>
+    </g>
+
+    <!-- 记忆记录卡片 -->
+    <g transform="translate(610, 60)">
+      <rect width="270" height="45" rx="6" fill="#064e3b" fill-opacity="0.2" stroke="#10b981" stroke-width="1" />
+      <text x="12" y="20" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="#34d399">📝 Note Agent (异步存储)</text>
+      <text x="12" y="36" font-family="system-ui, sans-serif" font-size="10" fill="#cbd5e1">异步将本轮核心剧情提炼为长期记忆摘要，存入向量库</text>
+    </g>
+  </g>
+
