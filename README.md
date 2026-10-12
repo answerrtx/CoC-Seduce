@@ -1,4 +1,4 @@
-# Seduced by the Narrative: Assessing Rule Adherence in Semi-Open Textual Sandboxes
+# Assessing Rule Adherence of LLM Adjudicators in Call of Cthulhu TRPG
 
 ## Abstract
 
